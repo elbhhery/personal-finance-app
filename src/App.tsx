@@ -12,7 +12,6 @@ import "./App.css";
 
 function App() {
   const [activePage, setActivePage] = useState("overview");
-
   const renderPage = () => {
     switch (activePage) {
       case "overview":
@@ -33,11 +32,8 @@ function App() {
   return (
     <>
       <Routes>
-        {/* صفحة اللوجين */}
         <Route element={<SignUp />} path="/" />
         <Route element={<LogInPage />} path="/logIn" />
-
-        {/* صفحة Home فيها Navbar + Active Component */}
         <Route
           path="/home"
           element={

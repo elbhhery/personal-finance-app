@@ -1,12 +1,19 @@
 import dayjs from "dayjs";
 import Data from "../../../data.json";
 import priceFormat from "../../lib/priceFormater";
-export default function TransactionsDetails() {
-  const SlicedRowOne = Data.transactions.slice(0, 10);
+export default function TransactionsDetails({
+  transPage,
+}: {
+  transPage: number;
+}) {
+  const ItemsPerPage = 10;
+  const startIndex = (transPage - 1) * ItemsPerPage;
+  const endIndex = startIndex + ItemsPerPage;
+  const SlicedRow = Data.transactions.slice(startIndex, endIndex);
   return (
     <div className="mt-4 md:p-4">
-      {SlicedRowOne.map((transferData, index) => {
-        const isLast = index === Data.transactions.length - 1;
+      {SlicedRow.map((transferData, index) => {
+        const isLast = index === SlicedRow.length - 1;
         return (
           <div
             key={index}
